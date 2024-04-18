@@ -66,28 +66,30 @@
                 
             </div>
             <div class="col-lg-6">
+                <form action="{% url 'add_to_cart' product.id %}" method="POST">
+                    {% csrf_token %}
 
-                <div class="product__details__text">
-                    <h3>{{ product.product_name }}</h3>
-                    <div class="rating">
-                        <!-- Your rating stars/icons here -->
-                    </div>
-                    <div class="product__details__price">$ {{ product.product_price }} <span>{{ product.discount_price }}</span></div>
-                    <p>{{ product.description }}</p>
-                    <!-- Add to cart button and other details here -->
-                </div>
-                <div class="product__details__button">
-                    <div class="quantity">
-                        <span>Quantity:</span>
-                        <div class="pro-qty">
-                            <input type="number" id="quantity" min="1" value="1">
+                    <div class="product__details__text">
+                        <h3>{{ product.product_name }}</h3>
+                        <div class="rating">
+                            <!-- Your rating stars/icons here -->
                         </div>
+                        <div class="product__details__price">$ {{ product.product_price }} <span>{{ product.discount_price }}</span></div>
+                        <p>{{ product.description }}</p>
+                        <!-- Add to cart button and other details here -->
                     </div>
-                    <button id="add-to-cart-btn" class="cart-btn">
-                        <a href="{% url 'add_to_cart' product.id %}">
-                            <span class="icon_bag_alt"></span> Add to Cart
-                        </a>
-                    </button>
+                    <div class="product__details__button">
+                        <div class="quantity">
+                            <span>Quantity:</span>
+                            <div class="pro-qty">
+                                <input type="number" id="quantity" name="quantity" min="1" value="1">
+
+                            </div>
+                        </div>
+                        <button type='submit' id="add-to-cart-btn" class="cart-btn">
+                                <span class="icon_bag_alt"></span> Add to Cart
+                        </button>
+                </form>
                     
                     
                     <ul>

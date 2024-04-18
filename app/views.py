@@ -104,30 +104,35 @@ def product_details(request, product_id):
 
 def add_to_cart(request, product_id):
     user = request.user
-    # cart_item = CartItem.objects.get(user = user)
-    # product = get_object_or_404(Product, pk=product_id)
-    # CartItem.objects.create(user=user ,
-    #                         product_name = product.product_name ,
-    #                         price = product.product_price ,
-    #                         quantity = 1,
-    #                         total = product.product_price)
+    user = CustomUser.objects.get(email = user)
+    product = get_object_or_404(Product, pk=product_id)
+    if request.method == 'POST':
+        quantity = request.POST.get('quantity', 1)
+        print(quantity)
+        
+    CartItem.objects.create(user=user ,
+                            product_name = product.product_name ,
+                            price = product.product_price ,
+                            quantity = 1,
+                            total = product.product_price)
     
 
-    
-    
     return redirect('view_cart')
 @login_required
 def view_cart(request):
-    # Retrieve cart items for the current user
-    # cart_items = CartItem.objects.filter(user=request.user)
     
-    # total_price = sum(item.total for item in cart_items)
+    cart_items = CartItem.objects.filter(user=request.user)
     
-    return render(request, 'shop_cart.html')
+    total_price = sum(item.total for item in cart_items)
+    
+    return render(request, 'shop_cart.html' , {'cart_items' : cart_items , 'total_price' : total_price})
 
 def remove_from_cart(request, product_id):
-    # Your logic to remove an item from the cart
-    return redirect('view_cart')
+     cart_item = get_object_or_404(CartItem, id=product_id, user=request.user)
+    
+    # Delete the cart item
+     cart_item.delete()
+     return redirect('view_cart')
 
 
 
