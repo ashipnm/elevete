@@ -78,6 +78,7 @@ def dashboard(request):
 @login_required
 def profiledeatils(request):
     user = request.user   
+    user = CustomUser.objects.get(email = user)
     
     return render(request,'profiledetails.html' , { 'user': user })
 
@@ -86,18 +87,18 @@ def address(request):
     return render(request,'address.html')
 
 def shop(request, category):
-    # products = Product.objects.filter(category__name=category)
-    return render(request, 'shop.html')
+    products = Product.objects.filter(category__name=category)
+    return render(request, 'shop.html', {'products' : products})
 def signout(request):
     return render(request,'signout.html')
 def product_details(request, product_id):
-    # product = get_object_or_404(Product, pk=product_id)
-    # product_images = [product.product_image_1, product.product_image_2, product.product_image_3, product.product_image_4, product.product_image_5]
-    # product_colours = product.Colors.all()
-    # product_size = product.sizes.all()
+    product = get_object_or_404(Product, pk=product_id)
+    product_images = [product.product_image_1, product.product_image_2, product.product_image_3, product.product_image_4, product.product_image_5]
+    product_colours = product.Colors.all()
+    product_size = product.sizes.all()
     
     
-    return render(request, 'product_details.html')
+    return render(request, 'product_details.html' , {'product' : product , 'product_images':product_images , 'product_colours': product_colours , 'product_size': product_size})
 
 
 
