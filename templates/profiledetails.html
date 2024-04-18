@@ -1,0 +1,113 @@
+{%extends 'base.html' %}
+{%block header %}
+<!-- Breadcrumb Section Begin -->
+<section class="breadcrumb-option">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb__text">
+                    <h4>Dashboard</h4>
+                    <div class="breadcrumb__links">
+                        <a href="{% url "index" %}">Home</a>
+                        <span>My Account</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{%endblock%}
+
+{%block content %}
+{%load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        .page-wrapper {
+            padding: 50px 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .dashboard-menu {
+            margin-bottom: 30px;
+            list-style: none;
+            padding: 0;
+        }
+
+        .dashboard-menu li {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .dashboard-menu li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            display: block;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .dashboard-menu li a:hover {
+            background-color: black;
+            color: #fff;}
+        </style>
+</head>
+<body>
+    <section class="user-dashboard page-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="list-inline dashboard-menu">
+                        <li><a href="{% url "dashboard" %}">Dashboard</a></li>
+                        <li><a href="order.html">Orders</a></li>
+                        <li><a href="{% url "address" %}">Address</a></li>
+                        <li><a class="active" href="{%  url "profiledetails" %}">Profile Details</a></li>
+                    </ul>
+                    <div class="dashboard-wrapper dashboard-user-profile">
+                        <div class="media">
+                            <div class="pull-left text-center">
+                                {% if user.profile_photo %}
+                                    <img class="media-object user-img" src="{{ user.profile_photo.url }}" alt="Image">
+                                {% else %}
+                                    <img class="media-object user-img" src="" alt="Image">
+                                {% endif %}
+                                
+                                {% comment %} <a href="#x" class="btn btn-transparent mt-5">Change Image</a> {% endcomment %}
+                            </div>
+                            <div class="container">
+                                <ul class="user-profile-list">
+                                    <li><span>Full Name:</span>{{ user.UserName }}</li>
+                                    <li><span>Country:</span>INDIA</li>
+                                    <li><span>Email:</span>mail@gmail.com</li>
+                                    <li><span>Phone:</span>+880123123</li>
+                                    <li><span>Date of Birth:</span>Dec , 22 ,1991</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </section>
+    
+{%endblock%}

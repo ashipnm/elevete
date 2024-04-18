@@ -1,0 +1,157 @@
+        {% extends "base.html" %}
+
+{% block header %}
+    <!-- Breadcrumb Begin -->
+    <div class="breadcrumb-option">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb__links">
+                        <a href="{% url 'index'%}"><i class="fa fa-home"></i> Home</a>
+                        <span>Shop</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb End -->
+{% endblock header %}
+
+{% load static %}
+{% block content %}
+    <!-- Shop Section Begin -->
+    <section class="shop spad">
+        <div class="container">
+            <div class="row">
+                <!-- Sidebar -->
+                <div class="col-lg-3 col-md-3">
+                    <div class="shop__sidebar">
+                        <!-- Categories -->
+                        <div class="sidebar__categories">
+                            <div class="section-title">
+                                <h4>Categories</h4>
+                            </div>
+                            <div class="categories__accordion">
+                                <div class="accordion" id="accordionExample">
+                                    {% comment %} Women Category {% endcomment %}
+                                    <div class="card">
+                                        <div>
+                                            <a href="{% url 'shop' category='women' %}" style="color: black;">Women</a>
+                                        </div>
+                                        <div id="collapseOne" class="collapse show" data-parent="#accordionExample">
+                                            <!-- Add subcategories if necessary -->
+                                        </div>
+                                    </div>
+                                    <!-- Men Category -->
+                                    <div class="card">
+                                        <div>
+                                            <a href="{% url 'shop' category='men' %}" style="color: black;">Men</a>
+                                        </div>
+                                        <div id="collapseTwo" class="collapse" data-parent="#accordionExample">
+                                            <!-- Add subcategories if necessary -->
+                                        </div>
+                                    </div>
+                                    <!-- Kids Category -->
+                                    <div class="card">
+                                        <div>
+                                            <a href="{% url 'shop' category='kids' %}" style="color: black;">Kids</a>
+                                        </div>
+                                        <div id="collapseThree" class="collapse" data-parent="#accordionExample">
+                                            <!-- Add subcategories if necessary -->
+                                        </div>
+                                    </div>
+                                    <!-- Accessories Category -->
+                                    <div class="card">
+                                        <div >
+                                            <a href="{% url 'shop' category='accessories' %}" style="color: black;">Accessories</a>
+                                        </div>
+                                        <div id="collapseFour" class="collapse" data-parent="#accordionExample">
+                                            <!-- Add subcategories if necessary -->
+                                        </div>
+                                    </div>
+                                    <!-- Cosmetic Category -->
+                                    <div class="card">
+                                        <div>
+                                            <a href="{% url 'shop' category='cosmetics' %}" style="color: black;">Cosmetic</a>
+                                        </div>
+                                        <div id="collapseFive" class="collapse" data-parent="#accordionExample">
+                                            <!-- Add subcategories if necessary -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Shop by Price -->
+                        <div class="sidebar__filter">
+                            <div class="section-title">
+                                <h4>Shop by price</h4>
+                            </div>
+                            <!-- Add price filter elements here -->
+                        </div>
+                        <!-- Shop by Size -->
+                        <div class="sidebar__sizes">
+                            <div class="section-title">
+                                <h4>Shop by size</h4>
+                            </div>
+                            <div class="size__list">
+                                <!-- Render size options dynamically -->
+                                {% for size in sizes %}
+                                    <label for="{{ size.name }}">
+                                        {{ size.name }}
+                                        <input type="checkbox" id="{{ size.name }}">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <!-- Shop by Color -->
+                        <div class="sidebar__color">
+                            <div class="section-title">
+                                <h4>Shop by color</h4>
+                            </div>
+                            <div class="size__list color__list">
+                                <!-- Render color options dynamically -->
+                                {% for color in colors %}
+                                    <label for="{{ color.name }}">
+                                        {{ color.name }}
+                                        <input type="checkbox" id="{{ color.name }}">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Main Content -->
+                <div class="col-lg-9 col-md-9">
+                    <div class="row">
+                        <!-- Products -->
+                        {% for product in products %}
+                            <div class="col-lg-4 col-md-6">
+                                <div class="product__item">
+                                    <div class="product__item__pic set-bg" data-setbg="{{ product.product_image_1.url }}">
+                                        <a href="{% url 'product_details' product_id=product.id %}"><img src="{{ product.product_image_1.url }}" alt=""></a>
+                                        <!-- Assuming the 'new' label should be displayed based on product attributes -->
+                                        <div class="label new">New</div>
+                                        <ul class="product__hover">
+                                            <!-- Add hover effects/icons as needed -->
+                                        </ul>
+                                    </div>
+                                    <div class="product__item__text">
+                                        <h6><a href="{% url 'product_details' product_id=product.id %}">{{ product.product_name }}</a></h6>
+                                        <!-- Assuming the rating is based on some product attribute -->
+                                        <div class="rating">
+                                            <!-- Add rating stars/icons as needed -->
+                                        </div>
+                                        <div class="product__price">$ {{ product.product_price }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Shop Section End -->
+{% endblock content %}

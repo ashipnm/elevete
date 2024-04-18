@@ -1,0 +1,67 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Out</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            width: 400px;
+            margin: 100px auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            text-align: center;
+        }
+
+        .logo {
+            display: block;
+            margin: 0 auto 20px;
+            width: 250px; /* Adjust logo size */
+            height: auto;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        p {
+            margin-bottom: 30px;
+        }
+
+        .signout-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .signout-link a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .signout-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="{% static "img/elevate.png" %}" alt="Company Logo" class="logo">
+        <h2>Sign Out</h2>
+        <p>You have been successfully signed out.</p>
+        <div class="signout-link">
+            <a href="{% url "login" %}">Sign in again</a>
+        </div>
+    </div>
+</body>
+</html>

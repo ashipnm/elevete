@@ -1,0 +1,146 @@
+{%extends 'base.html' %}
+{%block header %}
+<!-- Breadcrumb Section Begin -->
+<section class="breadcrumb-option">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb__text">
+                    <h4>Dashboard</h4>
+                    <div class="breadcrumb__links">
+                        <a href="{% url "index" %}">Home</a>
+                        <span>My Account</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{%endblock%}
+
+{%block content %}
+{%load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        .page-wrapper {
+            padding: 50px 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .dashboard-menu {
+            margin-bottom: 30px;
+            list-style: none;
+            padding: 0;
+        }
+
+        .dashboard-menu li {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .dashboard-menu li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            display: block;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .dashboard-menu li a:hover {
+            background-color: black;
+            color: #fff;
+        }
+    </style>
+</head>
+<section class="user-dashboard page-wrapper">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <ul class="list-inline dashboard-menu text-center">
+            <li><a href="{% url "dashboard" %}">Dashboard</a></li>
+            <li><a href="order.html">Orders</a></li>
+            <li><a class="active" href="{%url "address" %}">Address</a></li>
+            <li><a href="{% url "profiledetails" %}">Profile Details</a></li>
+          </ul>
+          <div class="dashboard-wrapper user-dashboard">
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Company</th>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Country</th>
+                    <th class="col-md-2 col-sm-3">Phone</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Nokia</td>
+                    <td>Adam Smith</td>
+                    <td>9/4 C Babor Road, Mohammad Pur, Dhaka</td>
+                    <td>Bangladesh</td>
+                    <td>+884 5452 6452</td>
+                    <td>
+                      <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-default"><i class="tf-pencil2" aria-hidden="true"></i></button>
+                        <button type="button" class="btn btn-default"><i class="tf-ion-close" aria-hidden="true"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Samsung</td>
+                    <td>Adam Smith</td>
+                    <td>9/4 C Babor Road, Mohammad Pur, Dhaka</td>
+                    <td>Bangladesh</td>
+                    <td>+884 5452 6452</td>
+                    <td>
+                      <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-default"><i class="tf-pencil2" aria-hidden="true"></i></button>
+                        <button type="button" class="btn btn-default"><i class="tf-ion-close" aria-hidden="true"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Motorola</td>
+                    <td>Adam Smith</td>
+                    <td>9/4 C Babor Road, Mohammad Pur, Dhaka</td>
+                    <td>Bangladesh</td>
+                    <td>+884 5452 6452</td>
+                    <td>
+                      <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-default"><i class="tf-pencil2" aria-hidden="true"></i></button>
+                        <button type="button" class="btn btn-default"><i class="tf-ion-close" aria-hidden="true"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {%endblock%}
