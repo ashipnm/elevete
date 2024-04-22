@@ -81,10 +81,10 @@
                             <li><a href="#">Pages</a>
                                 <ul class="dropdown">
                                     <li><a href="./product-details.html">Product Details</a></li>
-                                    <li><a href="./shop-cart.html">Shop Cart</a></li>
+                                    <li><a href="{% url 'view_cart'  %}">Shop Cart</a></li>
                                     <li><a href="./checkout.html">Checkout</a></li>
                                     <li><a href="{% url "confirmation" %}">Confirmation</a></li>
-                                    <li><a href="{% url "address" %}">address</a></li>
+                                    <li><a href="{% url "about" %}">about</a></li>
                                     
                                 </ul>
                             </li>
